@@ -12,6 +12,9 @@ def is_image_file(filename):
 def is_png_file(filename):
     return any(filename.endswith(extension) for extension in [".png"])
 
+def is_tiff_file(filename):
+    return any(filename.endswith(extension) for extension in [".tif"])
+
 def is_pkl_file(filename):
     return any(filename.endswith(extension) for extension in [".pkl"])
 
@@ -29,7 +32,8 @@ def load_npy(filepath):
     return img
 
 def load_img(filepath):
-    img = cv2.cvtColor(cv2.imread(filepath), cv2.COLOR_BGR2RGB)
+#   img = cv2.cvtColor(cv2.imread(filepath), cv2.COLOR_BGR2RGB)
+    img = cv2.imread(filepath, 1)
     img = img.astype(np.float32)
     img = img/255.
     return img
