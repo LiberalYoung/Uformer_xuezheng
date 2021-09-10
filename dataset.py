@@ -77,7 +77,7 @@ class DataLoaderTrain_Gaussian(Dataset):
         #noisy_files = sorted(os.listdir(os.path.join(rgb_dir, 'input')))
         #clean_files = clean_files[0:83000]
         #noisy_files = noisy_files[0:83000]
-        self.clean_filenames = [os.path.join(rgb_dir, x) for x in clean_files if is_png_file(x)]
+        self.clean_filenames = [os.path.join(rgb_dir, x) for x in clean_files if is_tiff_file(x)]
         #self.noisy_filenames = [os.path.join(rgb_dir, 'input', x)       for x in noisy_files if is_png_file(x)]
         self.noiselevel = noiselevel
         self.img_options=img_options
@@ -169,7 +169,7 @@ class DataLoaderTest(Dataset):
         noisy_files = sorted(os.listdir(os.path.join(rgb_dir, 'input')))
 
 
-        self.noisy_filenames = [os.path.join(rgb_dir, 'input', x) for x in noisy_files if is_png_file(x)]
+        self.noisy_filenames = [os.path.join(rgb_dir, 'input', x) for x in noisy_files if is_tiff_file(x)]
         
 
         self.tar_size = len(self.noisy_filenames)  
@@ -201,7 +201,7 @@ class DataLoaderTestSR(Dataset):
         LR_files = sorted(os.listdir(os.path.join(rgb_dir)))
 
 
-        self.LR_filenames = [os.path.join(rgb_dir, x) for x in LR_files if is_png_file(x)]
+        self.LR_filenames = [os.path.join(rgb_dir, x) for x in LR_files if is_tiff_file(x)]
         
 
         self.tar_size = len(self.LR_filenames)  
