@@ -2,7 +2,7 @@ import numpy as np
 import os
 from torch.utils.data import Dataset
 import torch
-from utils import is_png_file, load_img, Augment_RGB_torch
+from utils import is_png_file, is_tiff_file, load_img, Augment_RGB_torch
 import torch.nn.functional as F
 import random
 
@@ -22,10 +22,10 @@ class DataLoaderTrain(Dataset):
         clean_files = sorted(os.listdir(os.path.join(rgb_dir, gt_dir)))
         noisy_files = sorted(os.listdir(os.path.join(rgb_dir, input_dir)))
         
-        self.clean_filenames = [os.path.join(rgb_dir, gt_dir, x) for x in clean_files if is_png_file(x)]
-        self.noisy_filenames = [os.path.join(rgb_dir, input_dir, x)       for x in noisy_files if is_png_file(x)]
+        self.clean_filenames = [os.path.join(rgb_dir, gt_dir, x) for x in clean_files if is_tiff_file(x)]
+        self.noisy_filenames = [os.path.join(rgb_dir, input_dir, x)     for x in noisy_files if is_tiff_file(x)]
         
-        self.img_options=img_options
+        self.img_options = img_options
 
         self.tar_size = len(self.clean_filenames)  # get the size of target
 
