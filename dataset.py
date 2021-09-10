@@ -134,8 +134,8 @@ class DataLoaderVal(Dataset):
         noisy_files = sorted(os.listdir(os.path.join(rgb_dir, input_dir)))
 
 
-        self.clean_filenames = [os.path.join(rgb_dir, gt_dir, x) for x in clean_files if is_png_file(x)]
-        self.noisy_filenames = [os.path.join(rgb_dir, input_dir, x) for x in noisy_files if is_png_file(x)]
+        self.clean_filenames = [os.path.join(rgb_dir, gt_dir, x) for x in clean_files if is_tiff_file(x)]
+        self.noisy_filenames = [os.path.join(rgb_dir, input_dir, x) for x in noisy_files if is_tiff_file(x)]
         
 
         self.tar_size = len(self.clean_filenames)  
